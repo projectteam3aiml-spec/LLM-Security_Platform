@@ -1,0 +1,149 @@
+query,predicted_class,classifier_confidence,rank,similarity_score,prompt,context,response,source_dataset
+What are the symptoms of monkeypox?,safe,0.990183413028717,1,0.7021683,What is (are) Monkeypox Virus Infections ?,,"Monkeypox is a rare viral disease. It occurs mostly in central and western Africa. Wild rodents and squirrels carry it, but it is called monkeypox because scientists saw it first in lab monkeys. In 2003, it was reported in prairie dogs and humans in the U.S.     Centers for Disease Control and Prevention",MedQuAD
+What are the symptoms of monkeypox?,safe,0.990183413028717,2,0.47374994,What are the symptoms of Moyamoya disease ?,,"What are the signs and symptoms of Moyamoya disease? The Human Phenotype Ontology provides the following list of signs and symptoms for Moyamoya disease. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Abnormality of the cerebral vasculature 50% Cognitive impairment 50% Seizures 50% Ventriculomegaly 50% Autosomal recessive inheritance - Inflammatory arteriopathy - Telangiectasia - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",MedQuAD
+What are the symptoms of monkeypox?,safe,0.990183413028717,3,0.46658748,What is (are) Mumps ?,,"Mumps is an illness caused by the mumps virus. It starts with       - Fever    - Headache    - Muscle aches    - Tiredness    - Loss of appetite       After that, the salivary glands under the ears or jaw become swollen and tender. The swelling can be on one or both sides of the face. Symptoms last 7 to 10 days. Serious complications are rare.    You can catch mumps by being with another person who has it. There is no treatment for mumps, but the measles-mumps-rubella (MMR) vaccine can prevent it.    Before the routine vaccination program in the United States, mumps was a common illness in infants, children and young adults. Now it is a rare disease in the U.S.    Centers for Disease Control and Prevention",MedQuAD
+What are the symptoms of monkeypox?,safe,0.990183413028717,4,0.46281624,What is (are) Malaria ?,,"Malaria is a serious and sometimes fatal disease caused by a parasite that commonly infects a certain type of mosquito which feeds on humans. Infection with malaria parasites may result in a wide variety of symptoms, ranging from absent or very mild symptoms to severe disease and even death. People who get malaria are typically very sick with high fevers, shaking chills, and flu-like illness. In general, malaria is a curable disease if diagnosed and treated promptly and correctly. Treatment depends on many factors including disease severity, the species of malaria parasite causing the infection and the part of the world in which the infection was acquired.",MedQuAD
+What are the symptoms of monkeypox?,safe,0.990183413028717,5,0.46191353,What is (are) Smallpox ?,,"Smallpox is a disease caused by the Variola major virus. Some experts say that over the centuries it has killed more people than all other infectious diseases combined. Worldwide immunization stopped the spread of smallpox three decades ago. The last case was reported in 1977. Two research labs still keep small amounts of the virus. Experts fear bioterrorists could use the virus to spread disease.    Smallpox spreads very easily from person to person. Symptoms are flu-like. They include       - High fever    - Fatigue    - Headache    - Backache    - A rash with flat red sores       There is no treatment. Fluids and medicines for pain or fever can help control symptoms. Most people recover, but some can die. Those who do recover may have severe scars.    The U.S. stopped routine smallpox vaccinations in 1972. Military and other high-risk groups continue to get the vaccine. The U.S. has increased its supply of the vaccine in recent years. The vaccine makes some people sick, so doctors save it for those at highest risk of disease.     NIH: National Institute of Allergy and Infectious Diseases",MedQuAD
+What is Marfan syndrome?,safe,0.9900434017181396,1,0.6532521,What are the treatments for Marfan syndrome ?,,These resources address the diagnosis or management of Marfan syndrome:  - Gene Review: Gene Review: Marfan Syndrome  - Genetic Testing Registry: Marfan syndrome  - MarfanDX  - MedlinePlus Encyclopedia: Aortic Dissection  - MedlinePlus Encyclopedia: Marfan Syndrome  - MedlinePlus Encyclopedia: Thoracic Aortic Aneurysm  - National Marfan Foundation: Diagnosis   These resources from MedlinePlus offer information about the diagnosis and management of various health conditions:  - Diagnostic Tests  - Drug Therapy  - Surgery and Rehabilitation  - Genetic Counseling   - Palliative Care,MedQuAD
+What is Marfan syndrome?,safe,0.9900434017181396,2,0.63888705,What are the symptoms of Marfan Syndrome ?,,"Marfan syndrome can affect many parts of the body. As a result, the signs and symptoms of the disorder vary from person to person, even in the same family.
+                
+Marfan complications also vary, depending on how the condition affects your body. Marfan syndrome most often affects the connective tissue of the heart, eyes, bones, lungs, and covering of the spinal cord. This can cause many complications, some of which are life threatening.
+                
+Marfan Traits
+                
+Marfan syndrome often affects the long bones of the body. This can lead to signs, or traits, such as:
+                
+A tall, thin build.
+                
+Long arms, legs, fingers, and toes and flexible joints.
+                
+A spine that curves to one side. This condition is called scoliosis.
+                
+A chest that sinks in or sticks out. These conditions are called pectus excavatum and pectus carinatum, respectively.
+                
+Teeth that are too crowded.
+                
+Flat feet.
+                
+Stretch marks on the skin also are a common trait in people who have Marfan syndrome. Stretch marks usually appear on the lower back, buttocks, shoulders, breasts, thighs, and abdomen.
+                
+Not everyone who has these traits has Marfan syndrome. Some of these traits also are signs of other connective tissue disorders.
+                
+Complications of Marfan Syndrome
+                
+Heart and Blood Vessel Complications
+                
+The most serious complications of Marfan syndrome involve the heart and blood vessels.
+                
+Marfan syndrome can affect the aorta, the main blood vessel that supplies oxygen-rich blood to the body. In Marfan syndrome, the aorta can stretch and grow weak. This condition is called aortic dilation or aortic aneurysm.
+                
+If the aorta stretches and grows weak, it may tear and leak blood. This condition, called aortic dissection, can lead to severe heart problems or even death.
+                
+Aortic dissection can cause severe pain in either the front or back of the chest or abdomen. The pain can travel upward or downward. If you have symptoms of aortic dissection, call 911.
+                
+Marfan syndrome also can cause problems with the heart's mitral (MI-trul) valve. This valve controls blood flow between the upper and lower chambers on the left side of the heart. Marfan syndrome can lead to mitral valve prolapse (MVP).
+                
+MVP is a condition in which the flaps of the mitral valve are floppy and don't close tightly. MVP can cause shortness of breath, palpitations (pal-pi-TA-shuns), chest pain, and other symptoms.
+                
+If you have MVP, your doctor may hear a heart murmur if he or she listens to your heart with a stethoscope. A heart murmur is an extra or unusual sound heard during the heartbeat.
+                
+Eye Complications
+                
+Marfan syndrome can cause many eye problems. A common problem in Marfan syndrome is a dislocated lens in one or both of the eyes. In this condition, the lens (the part of the eye that helps focus light) shifts up, down, or to the side. This can affect your eyesight. A dislocated lens often is the first sign that someone has Marfan syndrome.
+                
+Other eye complications of Marfan syndrome include nearsightedness, early glaucoma (high pressure in the fluid in the eyes), and early cataracts (clouding of an eye's lens). A detached retina also can occur.
+                
+Nervous System Complications
+                
+Fluid surrounds your brain and spinal cord. A substance called dura covers the fluid. In Marfan syndrome, the dura can stretch and grow weak.
+                
+This condition, called dural ectasia (ek-TA-ze-ah), can occur in people who have Marfan syndrome as they grow older. Eventually, the bones of the spine may wear away.
+                
+Symptoms of this condition are lower back pain, abdominal pain, headache, and numbness in the legs.
+                
+Lung Complications
+                
+Marfan syndrome can cause sudden pneumothorax (noo-mo-THOR-aks), or collapsed lung. In this condition, air or gas builds up in the space between the lungs and chest wall. If enough air or gas builds up, a lung can collapse.
+                
+The most common symptoms of a collapsed lung are sudden pain in one side of the lung and shortness of breath.
+                
+Conditions such as scoliosis (a curved spine) and pectus excavatum (a chest that sinks in) can prevent the lungs from expanding fully. This can cause breathing problems. Marfan syndrome also can cause changes in the lung tissue, and it can lead to early emphysema (em-fi-SE-ma).
+                
+Marfan syndrome also has been linked to sleep apnea. In people who have Marfan syndrome, the shape of the face, oral cavity, or teeth may increase the risk of sleep apnea. Sleep apnea causes one or more pauses in breathing or shallow breaths while you sleep.
+                
+Breathing pauses can last from a few seconds to minutes. They often occur 5 to 30 times or more an hour. Typically, normal breathing then starts again, sometimes with a loud snort or choking sound.",MedQuAD
+What is Marfan syndrome?,safe,0.9900434017181396,3,0.5922055,How to diagnose Marfan Syndrome ?,,"Your doctor will diagnose Marfan syndrome based on your medical and family histories, a physical exam, and test results. He or she also will consult a set of guidelines called Ghent criteria, which are used to diagnose Marfan syndrome.
+                
+Marfan syndrome can be hard to diagnose. This is because its signs, or traits, are the same as or similar to the signs of other connective tissue disorders.
+                
+If you're diagnosed with Marfan syndrome, all of your first-degree relatives (for example, parents, siblings, and children) also should be checked for the disorder. This is because, even in families, the outward traits of Marfan syndrome may vary quite a bit.
+                
+Specialists Involved
+                
+Your family doctor or another type of doctor, such as an orthopedist (bone specialist), may notice certain traits that suggest Marfan syndrome.
+                
+If so, your doctor will likely refer you to a geneticist or cardiologist. A geneticist is hereditary disease expert. A cardiologist is a heart specialist. These two types of specialists often have the most experience working with people who have Marfan syndrome.
+                
+A geneticist will ask for medical information about you and your family. He or she will examine you and perhaps other members of your family. The geneticist also will coordinate your visits with other doctors, including a cardiologist, an ophthalmologist (eye specialist), and an orthopedist.
+                
+After reviewing the medical findings, the geneticist will determine whether you have Marfan syndrome.
+                
+Medical and Family Histories
+                
+Your doctor will ask about your medical history and your family's medical history. For example, your doctor may ask whether:
+                
+You've had heart disease, eye problems, or problems with your spine. These complications are common in people who have Marfan syndrome.
+                
+You have shortness of breath, palpitations, or chest pain. These are common symptoms of heart or lung problems linked to Marfan syndrome.
+                
+Any of your family members have Marfan syndrome, have died from heart problems, or have died suddenly.
+                
+Physical Exam
+                
+During the physical exam, your doctor will look for Marfan syndrome traits. For example, he or she may check the curve of your spine and the shape of your feet. Your doctor also will listen to your heart and lungs with a stethoscope.
+                
+Diagnostic Tests
+                
+Your doctor may recommend one or more of the following tests to help diagnose Marfan syndrome.
+                
+Echocardiography
+                
+Echocardiography (EK-o-kar-de-OG-ra-fee), or echo, is a painless test that uses sound waves to create pictures of your heart and blood vessels.
+                
+This test shows the size and shape of your heart and the diameter of your aorta or other blood vessels. (The aorta is the main artery that carries oxygen-rich blood to your body.) Echo also shows how well your heart's chambers and valves are working.
+                
+For people who have Marfan syndrome, echo mainly is used to check the heart's valves and aorta.
+                
+Magnetic Resonance Imaging and Computed Tomography Scans
+                
+Magnetic resonance imaging (MRI) is a test that uses radio waves and magnets to create detailed pictures of your organs and tissues. Computed tomography (CT) uses an x-ray machine to take clear, detailed pictures of your organs.
+                
+MRI and CT scans are used to check your heart valves and aorta. These scans also are used to check for dural ectasia, a nervous system complication of Marfan syndrome.
+                
+Slit-Lamp Exam
+                
+For this test, an ophthalmologist (eye specialist) will use a microscope with a light to check your eyes. A slit-lamp exam can find out whether you have a dislocated lens, cataracts, or a detached retina.
+                
+Genetic Testing
+                
+In general, genetic testing involves blood tests to detect changes in genes. However, because many different genetic changes can cause Marfan syndrome, no single blood test can diagnose the condition.
+                
+Ghent Criteria
+                
+Because no single test can diagnose Marfan syndrome, doctors use a set of guidelines called Ghent criteria to help diagnose the condition. The Ghent criteria are divided into major criteria and minor criteria. Sometimes genetic testing is part of this evaluation.
+                
+Major criteria include traits that are common in people who have Marfan syndrome. Minor criteria include traits that are common in many people. Doctors use a scoring system based on the number and type of Ghent criteria present to diagnose Marfan syndrome.
+                
+Talk with your doctor about which traits you have and your likelihood of having Marfan syndrome.",MedQuAD
+What is Marfan syndrome?,safe,0.9900434017181396,4,0.5807546,How many people are affected by Marfan syndrome ?,,"The incidence of Marfan syndrome is approximately 1 in 5,000 worldwide.",MedQuAD
+What is Marfan syndrome?,safe,0.9900434017181396,5,0.5783385,What is (are) Marfan Syndrome ?,,"Marfan syndrome is a disorder that affects connective tissue. Connective tissues are proteins that support skin, bones, blood vessels, and other organs. One of these proteins is fibrillin. A problem with the fibrillin gene causes Marfan syndrome.     Marfan syndrome can be mild to severe, and the symptoms can vary. People with Marfan syndrome are often very tall, thin, and loose jointed. Most people with Marfan syndrome have heart and blood vessel problems, such as a weakness in the aorta or heart valves that leak. They may also have problems with their bones, eyes, skin, nervous system, and lungs.    There is no single test to diagnose Marfan syndrome. Your doctor may use your medical history, family history, and a physical exam to diagnose it. Marfan syndrome has no cure, but treatments can help delay or prevent complications. Treatments include medicines, surgery, and other therapies.    NIH: National Institute of Arthritis and Musculoskeletal and Skin Diseases",MedQuAD
+How is vitamin K deficiency treated?,safe,0.9900263547897339,1,0.60718805,Do you have information about Vitamin K,,"Summary : Vitamins are substances that your body needs to grow and develop normally. Vitamin K helps your body by making proteins for healthy bones and tissues. It also makes proteins for blood clotting. If you don't have enough vitamin K, you may bleed too much.    Newborns have very little vitamin K. They usually get a shot of vitamin K soon after they are born.    If you take blood thinners, you need to be careful about how much vitamin K you get. You also need to be careful about taking vitamin E supplements. Vitamin E can interfere with how vitamin K works in your body. Ask your health care provider for recommendations about these vitamins.    There are different types of vitamin K. Most people get vitamin K from plants such as green vegetables, and dark berries. Bacteria in your intestines also produce small amounts of another type of vitamin K.",MedQuAD
+How is vitamin K deficiency treated?,safe,0.9900263547897339,2,0.59429073,Treatment of vitamin D deficiency in CKD patients with ergocalciferol: are current K/DOQI treatment guidelines adequate?,"Vitamin D deficiency/insufficiency (VDDI) is common in CKD patients and may be associated with abnormal mineral metabolism. It is not clear whether the K/DOQI recommended doses of ergocalciferol are adequate for correction of VDDI and hyperparathyroidism. Retrospective study of 88 patients with CKD Stages 1 - 5 and baseline 25-hydroxyvitamin D level<30 ng/ml (<75 nmol/l). Patients treated with ergocalciferol as recommended by K/DOQI guidelines. Only 53 patients had elevated baseline PTH level for the CKD stage. Patients were excluded if they received vitamin D preparations other than ergocalciferol or phosphate binders. 25-hydroxyvitamin D level, intact PTH level (iPTH), and other parameters of mineral metabolism were measured at baseline and after completion of ergocalciferol course. 88 patients with CKD were treated with ergocalciferol. Mean age 56.8 +/- 9.5 years and 41% were males. The mean (+/- SD) GFR was 28.3 +/- 16.6 ml/min. At the end of the 6-month period of ergocalciferol treatment, the mean 25-hydroxyvitamin D level increased from 15.1 +/- 5.8 to 23.3 +/- 11.8 ng/ml (37.75 +/- 14.5 to 58.25 +/- 29.5 nmol/l) (p<0.001). Treatment led to>or = 5 ng/ml (12.5 nmol/l) increases in 25-hydroxyvitamin D level in 54% of treated patients, and only 25% achieved levels>or = 30 ng/ml (75 nmol/l). Mean iPTH level decreased from 157.9 +/- 125.9 to 150.7 +/- 127.5 pg/ml (p = 0.5). Only 26% of patients had>or = 30% decrease in their iPTH level after treatment with ergocalciferol.",Current K/DOQI guidelines are inadequate for correcting VDDI or secondary hyperparathyroidism in CKD patients. Future studies should examine the effects of higher or more frequent dosing of ergocalciferol on these clinical endpoints.,PubMedQA
+How is vitamin K deficiency treated?,safe,0.9900263547897339,3,0.55550647,What are the treatments for Fumarase deficiency ?,,How might fumarase deficiency be treated? There is currently no effective treatment for fumarase deficiency. Nutritional intervention may be appropriate for children with feeding difficulties. Physical therapy and wheelchairs can also be useful for some individuals.,MedQuAD
+How is vitamin K deficiency treated?,safe,0.9900263547897339,4,0.5464055,What are the treatments for Rickets ?,,"What treatment is available for rickets? The treatment for rickets depends on the cause of the condition. If rickets is caused by a lack of vitamin D in the diet, then it is usually treated with carefully adjusted levels of vitamin D and calcium. The child's condition may improve within a few weeks of treatment. If rickets is caused by an inherited disorder or another medical condition, a healthcare provider would determine the appropriate treatment.",MedQuAD
+How is vitamin K deficiency treated?,safe,0.9900263547897339,5,0.54232144,Do you have information about Vitamin D,,"Summary : Vitamins are substances that your body needs to grow and develop normally. Vitamin D helps your body absorb calcium. Calcium is one of the main building blocks of bone. A lack of vitamin D can lead to bone diseases such as osteoporosis or rickets. Vitamin D also has a role in your nerve, muscle, and immune systems.    You can get vitamin D in three ways: through your skin, from your diet, and from supplements. Your body forms vitamin D naturally after exposure to sunlight. However, too much sun exposure can lead to skin aging and skin cancer. So many people try to get their vitamin D from other sources.    Vitamin D-rich foods include egg yolks, saltwater fish, and liver. Some other foods, like milk and cereal, often have added vitamin D.     You can also take vitamin D supplements. Check with your health care provider to see how much you should take. People who might need extra vitamin D include       - Seniors    - Breastfed infants    - People with dark skin    - People with certain conditions, such as liver diseases, cystic fibrosis and Crohn's disease    - People who are obese or have had gastric bypass surgery       NIH: National Institutes of Health Office of Dietary Supplements",MedQuAD
+What are the symptoms of Kallmann syndrome?,safe,0.9901280999183655,1,0.71112484,What are the symptoms of Kallmann syndrome ?,,"What are the signs and symptoms of Kallmann syndrome? The Human Phenotype Ontology provides the following list of signs and symptoms for Kallmann syndrome. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Abnormality of the sense of smell 90% Anterior hypopituitarism 90% Decreased fertility 90% Erectile abnormalities 90% Hypoplasia of penis 90% Abnormality of the voice 50% Breast aplasia 50% Cryptorchidism 50% Primary amenorrhea 50% Reduced bone mineral density 50% Abnormality of color vision 7.5% Cleft palate 7.5% Delayed skeletal maturation 7.5% Gait disturbance 7.5% Gynecomastia 7.5% Hemiplegia/hemiparesis 7.5% Ichthyosis 7.5% Incoordination 7.5% Muscle weakness 7.5% Muscular hypotonia 7.5% Neurological speech impairment 7.5% Nystagmus 7.5% Obesity 7.5% Pes cavus 7.5% Ptosis 7.5% Recurrent fractures 7.5% Reduced number of teeth 7.5% Renal hypoplasia/aplasia 7.5% Rocker bottom foot 7.5% Seizures 7.5% Sensorineural hearing impairment 7.5% Skeletal dysplasia 7.5% Tremor 7.5% Visual impairment 7.5% The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",MedQuAD
+What are the symptoms of Kallmann syndrome?,safe,0.9901280999183655,2,0.657105,Is Kallmann syndrome inherited ?,,"How is Kallmann syndrome inherited? Kallmann syndrome (KS) may be inherited in an X-linked recessive, autosomal dominant, or autosomal recessive manner depending on the gene(s) responsible. For example: KS due to mutations in the KAL1 gene (also called the ANOS1 gene), causing Kallmann syndrome 1, is inherited in an X-linked recessive manner. KS due to mutations in the FGFR1, PROKR2, PROK2, CHD7 or FGF8 genes (causing KS types 2, 3, 4, 5 and 6, respectively) is predominantly inherited in an autosomal dominant manner. KS due to mutations in PROKR2 and PROK2 can also be inherited in an autosomal recessive manner. In the majority of people with KS, the family history appears to be negative (the condition occurs sporadically). However, affected people are still at risk to pass the disease-causing mutation(s) on to their children, or to have an affected child. The risk for each child to be affected depends on the genetic cause in the affected person and may be up to 50%. People with personal questions about the genetic cause and inheritance of KS are encouraged to speak with a genetic counselor or other genetics professional. The genetic cause in many cases remains unknown, and a thorough family history should be obtained to understand the mode of inheritance in each family and to aid in genetic testing and counseling. Information about specific features present or absent in all family members can help determine the mode of inheritance present.",MedQuAD
+What are the symptoms of Kallmann syndrome?,safe,0.9901280999183655,3,0.64902765,What are the symptoms of Kallmann syndrome 3 ?,,"What are the signs and symptoms of Kallmann syndrome 3? The Human Phenotype Ontology provides the following list of signs and symptoms for Kallmann syndrome 3. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Hearing impairment 5% Seizures 5% Anosmia - Autosomal recessive inheritance - Cleft palate - Cleft upper lip - Cryptorchidism - Hypogonadotrophic hypogonadism - Hypotelorism - Micropenis - Pectus excavatum - Pes planus - Primary amenorrhea - Unilateral renal agenesis - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",MedQuAD
+What are the symptoms of Kallmann syndrome?,safe,0.9901280999183655,4,0.64620054,What is (are) Kallmann syndrome ?,,"Kallmann syndrome (KS) is a condition characterized primarily by hypogonadotropic hypogonadism (HH) and absent or diminished sense of smell (anosmia or hyposmia, respectively). HH is present from birth and is due to deficiency of gonadotropin-releasing hormone (GnRH). KS is often diagnosed at puberty due to lack of sexual development, but may be suspected in male infants with undescended testicles or an unusually small penis. Untreated adult males may have decreased bone density and muscle mass; decreased testicular volume; erectile dysfunction; diminished libido; and infertility. Untreated adult females almost always have absent menstruation with normal, little, or no breast development. In rare cases, features may include failure of kidney development (renal agenesis); hearing impairment; cleft lip or palate; and/or dental abnormalities. Most cases of KS are sporadic but some types are familial. The inheritance pattern differs depending on the genetic cause. Treatment includes hormone replacement therapy for sexual development. Fertility can be achieved in most cases.",MedQuAD
+What are the symptoms of Kallmann syndrome?,safe,0.9901280999183655,5,0.63062733,How many people are affected by Kallmann syndrome ?,,"Kallmann syndrome is estimated to affect 1 in 10,000 to 86,000 people and occurs more often in males than in females. Kallmann syndrome 1 is the most common form of the disorder.",MedQuAD

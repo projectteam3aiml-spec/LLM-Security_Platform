@@ -1,0 +1,31 @@
+# Core
+numpy
+pandas
+scikit-learn
+
+# Deep Learning
+torch
+
+# Hugging Face
+transformers
+tokenizers
+safetensors
+
+# Sentence Embeddings
+sentence-transformers
+
+# Vector Search
+faiss-cpu
+
+# Jupyter
+jupyter
+ipykernel
+notebook
+
+# Visualization
+matplotlib
+seaborn
+
+# Utilities
+tqdm
+joblib
