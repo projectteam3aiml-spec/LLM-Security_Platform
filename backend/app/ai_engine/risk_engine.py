@@ -1,66 +1,52 @@
-from typing import Dict, List, Any
+"""Authoritative Phase 7 risk-aware decision engine."""
+from typing import Any, Dict, Union
+
 
 class RiskEngine:
-    """Aggregates multi-model telemetry into a unified risk score and policy decision."""
+    """Convert a five-class security prediction into one policy decision."""
 
-    def __init__(self):
-        # Weighting factors for the final risk calculation
-        self.weights = {
-            "injection_threat": 0.50,
-            "phi_exposure": 0.30,
-            "vector_similarity": 0.20
-        }
+    CLASS_RISK = {
+        "safe": 0.05,
+        "suspicious": 0.50,
+        "malicious": 0.90,
+        "phi": 1.00,
+        "jailbreak": 0.95,
+    }
+    SECURITY_WEIGHTS = {"class": 0.80, "confidence": 0.20}
 
-    def evaluate(
-        self, 
-        classification: Dict[str, Any], 
-        phi_entities: List[Dict[str, Any]],
-        similarity: Dict[str, Any]
-    ) -> Dict[str, Any]:
-        
-        # 1. Base scores from ML models (normalized 0-100)
-        threat_score = classification.get("threat_score", 0.0) * 100
-        sim_score = similarity.get("max_similarity", 0.0) * 100
-        
-        # Calculate PHI severity based on entity count and confidence
-        phi_score = 0
-        if phi_entities:
-            base_phi_penalty = 40
-            per_entity_penalty = sum([e.get("confidence", 1.0) * 15 for e in phi_entities])
-            phi_score = min(base_phi_penalty + per_entity_penalty, 100)
-
-        # 2. Weighted Aggregation
-        overall_risk = (
-            (threat_score * self.weights["injection_threat"]) +
-            (phi_score * self.weights["phi_exposure"]) +
-            (sim_score * self.weights["vector_similarity"])
-        )
-        overall_risk = min(int(overall_risk), 100)
-
-        # 3. Policy Enforcement Engine
-        action = "Allowed"
-        flags = []
-
-        if overall_risk >= 75 or classification.get("category") == "Prompt Injection / Jailbreak":
-            action = "Blocked"
-            flags.append("High-confidence malicious intent detected.")
-        elif sim_score >= 85:
-            action = "Blocked"
-            flags.append("Matches known adversarial attack vector.")
-        elif phi_entities:
-            action = "Masked"
-            flags.append(f"Detected {len(phi_entities)} sensitive data entities.")
-        elif overall_risk >= 45:
-            action = "Quarantined"
-            flags.append("Suspicious anomalous behavior detected.")
-
+    @staticmethod
+    def _legacy_label(classification: Dict[str, Any]) -> str:
+        """Adapt the legacy three-category API classifier to Phase 7 labels."""
+        category = classification.get("category", "Safe Query")
         return {
-            "risk_score": overall_risk,
-            "action": action,
-            "flags": flags,
-            "breakdown": {
-                "classifier_risk": int(threat_score),
-                "phi_risk": int(phi_score),
-                "similarity_risk": int(sim_score)
-            }
-        }
+            "Prompt Injection / Jailbreak": "jailbreak",
+            "Suspicious Intent": "suspicious",
+            "Safe Query": "safe",
+        }.get(category, "suspicious")
+
+    def evaluate(self, predicted_class: Union[str, Dict[str, Any]], confidence: float = None) -> Dict[str, Any]:
+        """Calculate the sole project risk score and decision."""
+        if isinstance(predicted_class, dict):
+            classification = predicted_class
+            label = classification.get("label") or self._legacy_label(classification)
+            confidence = classification.get("confidence", 0.0) if confidence is None else confidence
+        else:
+            label = predicted_class
+
+        label = str(label).lower()
+        if label not in self.CLASS_RISK:
+            raise ValueError(f"Unknown security class: {label}")
+        if confidence is None:
+            raise ValueError("confidence is required when passing a class label")
+
+        confidence = max(0.0, min(1.0, float(confidence)))
+        class_risk = self.CLASS_RISK[label]
+        risk_score = self.SECURITY_WEIGHTS["class"] * class_risk + self.SECURITY_WEIGHTS["confidence"] * confidence
+        if risk_score < 0.30:
+            risk_level, decision = "LOW", "ALLOW"
+        elif risk_score < 0.70:
+            risk_level, decision = "MEDIUM", "REVIEW"
+        else:
+            risk_level, decision = "HIGH", "BLOCK"
+
+        return {"predicted_class": label, "confidence": confidence, "class_risk": class_risk, "risk_score": risk_score, "risk_level": risk_level, "decision": decision}

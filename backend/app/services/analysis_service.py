@@ -1,57 +1,52 @@
-import time
+"""FastAPI-facing adapter for the single secure RAG pipeline."""
 import asyncio
-from typing import Dict, Any
+from pathlib import Path
+from typing import Any, Dict, Optional
 
-from app.ai_engine.classifier import PromptClassifier
-from app.ai_engine.phi_detector import PHIDetector
-from app.ai_engine.similarity import SimilarityAnalyzer
-from app.ai_engine.risk_engine import RiskEngine
+from app.ai_engine.secure_rag import SecureRAGPipeline
+
 
 class AnalysisService:
-    """Orchestrates the asynchronous ML pipeline for real-time prompt analysis."""
+    """Expose SecureRAGPipeline results using the analysis API response shape."""
 
-    def __init__(self):
-        self.classifier = PromptClassifier()
-        self.phi_detector = PHIDetector()
-        self.similarity = SimilarityAnalyzer()
-        self.risk_engine = RiskEngine()
+    def __init__(self, rag_pipeline: Optional[SecureRAGPipeline] = None):
+        project_root = Path(__file__).resolve().parents[3]
+        self.rag_pipeline = rag_pipeline or SecureRAGPipeline(project_root)
 
-    async def analyze_prompt(self, prompt_text: str, source: str = "API Gateway") -> Dict[str, Any]:
-        start_time = time.time()
-        
-        # Run heavy ML inference concurrently in thread pools to avoid blocking the event loop
-        phi_task = asyncio.to_thread(self.phi_detector.detect, prompt_text)
-        class_task = asyncio.to_thread(self.classifier.classify, prompt_text)
-        sim_task = asyncio.to_thread(self.similarity.compute_similarity, prompt_text)
-
-        # Await all ML models simultaneously (Massive latency reduction)
-        entities, classification, similarity_results = await asyncio.gather(phi_task, class_task, sim_task)
-        
-        # Mask text based on detected entities
-        masked_text = self.phi_detector.mask(prompt_text, entities)
-        
-        # Compute final risk and policy action
-        risk_result = self.risk_engine.evaluate(classification, entities, similarity_results)
-        
-        latency = round((time.time() - start_time) * 1000, 2)
-
+    async def analyze_prompt(self, prompt_text: str, source: str = "API Gateway", session_id: str = "anonymous") -> Dict[str, Any]:
+        result = await asyncio.to_thread(self.rag_pipeline.answer, prompt_text)
         return {
             "original_prompt": prompt_text,
-            "processed_prompt": masked_text,
+            "processed_prompt": prompt_text,
             "source": source,
             "analysis": {
-                "classification": classification,
-                "similarity": similarity_results,
-                "entities": entities,
+                "classification": {
+                    "label": result["predicted_class"],
+                    "confidence": result["confidence"],
+                    "probabilities": result.get("class_probabilities", {}),
+                },
+                "retrieved_documents": result.get("retrieved_documents", []),
+                "answerability_status": result.get("validation_status"),
             },
             "security_decision": {
-                "risk_score": risk_result["risk_score"],
-                "action": risk_result["action"],
-                "flags": risk_result["flags"],
-                "score_breakdown": risk_result["breakdown"]
+                "risk_score": result["risk_score"],
+                "risk_level": result["risk_level"],
+                "action": result["decision"],
+                "flags": [],
+                "score_breakdown": {
+                    "class_risk": int(result["class_risk"] * 100),
+                    "confidence_risk": int(result["confidence"] * 100),
+                },
             },
-            "metrics": {
-                "latency_ms": latency,
-                "models_used": ["DeBERTa-v3", "BERT-NER", "MiniLM-L6-v2"]
-            }
+            "response": result.get("final_answer"),
+            "output_validation": {
+                "status": result.get("validation_status"),
+                "reasons": result.get("reasons", []),
+                "detected_entities": result.get("detected_entities", []),
+            },
+            "execution": {
+                "retrieval_performed": result.get("retrieval_performed", False),
+                "llm_executed": result.get("llm_executed", False),
+                "review_policy": result.get("review_policy"),
+            },
         }
