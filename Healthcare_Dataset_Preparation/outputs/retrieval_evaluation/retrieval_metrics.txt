@@ -1,0 +1,10 @@
+KNOWLEDGE BASE RETRIEVAL EVALUATION
+==================================================
+
+Knowledge base documents: 15979
+FAISS vectors: 15979
+Evaluation queries: 100
+
+Top-1 Retrieval Accuracy: 0.6100
+Top-3 Retrieval Accuracy: 0.8500
+Top-5 Retrieval Accuracy: 0.9300

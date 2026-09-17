@@ -3,6 +3,12 @@ KNOWLEDGE BASE OVERVIEW
 ======================================================================
 
 Shape : (15979, 4)
+=======================
+Source Distribution
+=======================
+MedQuAD     14979
+PubMedQA     1000
+Name: count, dtype: int64
 
 Columns
 prompt

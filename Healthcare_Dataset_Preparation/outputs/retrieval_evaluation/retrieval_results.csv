@@ -1,0 +1,101 @@
+query,expected_document_id,top_1,top_3,top_5,top_1_id,top_1_score
+What are the symptoms of Camptodactyly syndrome Guadalajara type 3 ?,10328,True,True,True,10328,0.8373721837997437
+What are the treatments for granulomatosis with polyangiitis ?,12017,True,True,True,12017,0.7470911741256714
+What are the treatments for Chronic progressive external ophthalmoplegia ?,9195,False,True,True,3683,0.7639035582542419
+Do you have information about Marijuana,14537,True,True,True,14537,0.6941598653793335
+What is (are) Cyclic Vomiting Syndrome ?,4101,False,True,True,5121,0.7261233329772949
+Is nonsyndromic aplasia cutis congenita inherited ?,2932,True,True,True,2932,0.8366006016731262
+What are the genetic changes related to malonyl-CoA decarboxylase deficiency ?,8290,True,True,True,8290,0.8286029100418091
+What are the genetic changes related to achromatopsia ?,11567,True,True,True,11567,0.7001081705093384
+What is (are) Sotos syndrome ?,14803,False,False,False,2172,0.684482991695404
+What is (are) Refsum Disease ?,3000,False,False,False,85,0.6676721572875977
+How many people are affected by pilomatricoma ?,6932,True,True,True,6932,0.705019474029541
+What is (are) Alpers' Disease ?,15870,False,False,False,9795,0.574213445186615
+What is (are) Esophagus Disorders ?,15305,True,True,True,15305,0.6921831965446472
+Global Longitudinal Pathway: has medical education curriculum influenced medical students' skills and attitudes toward culturally diverse populations?,15170,True,True,True,15170,0.8504619598388672
+What is (are) Zika Virus ?,11616,False,True,True,14139,0.688818633556366
+what research (or clinical trials) is being done for Lung Cancer ?,14302,True,True,True,14302,0.7459009289741516
+How many people are affected by infantile-onset spinocerebellar ataxia ?,2009,True,True,True,2009,0.722051739692688
+What are the symptoms of Lenz microphthalmia syndrome ?,9158,True,True,True,9158,0.7866703271865845
+What are the treatments for Progressive hemifacial atrophy ?,11809,True,True,True,11809,0.9399236440658569
+What is (are) Bronchiolitis obliterans organizing pneumonia ?,15924,False,True,True,3565,0.7683401107788086
+What is (are) paroxysmal extreme pain disorder ?,1470,True,True,True,1470,0.7505598664283752
+What causes Rheumatoid Arthritis ?,5274,False,False,True,8537,0.7742544412612915
+What is (are) Anophthalmia plus syndrome ?,304,False,True,True,7937,0.7836929559707642
+What is (are) cartilage-hair hypoplasia ?,5148,True,True,True,5148,0.7434636950492859
+What are the genetic changes related to Bloom syndrome ?,4201,True,True,True,4201,0.5969107747077942
+"What are the symptoms of Heart-hand syndrome, Slovenian type ?",735,True,True,True,735,0.8175456523895264
+Who is at risk for Osteosarcoma and Malignant Fibrous Histiocytoma of Bone? ?,1533,False,True,True,9063,0.8604301810264587
+Is familial isolated pituitary adenoma inherited ?,123,False,False,True,15450,0.832198977470398
+What are the treatments for Gray platelet syndrome ?,6134,True,True,True,6134,0.7086201906204224
+What is (are) Meningoencephalocele ?,88,True,True,True,88,0.7784115672111511
+Is sporadic hemiplegic migraine inherited ?,7625,False,True,True,11961,0.7861495018005371
+Does government assistance improve utilization of eye care services by low-income individuals?,6415,True,True,True,6415,0.766087532043457
+What is (are) Haemophilus Infections ?,10113,True,True,True,10113,0.6796247959136963
+How many people are affected by maple syrup urine disease ?,5687,False,True,True,1938,0.6672250032424927
+What causes Arts syndrome ?,15623,False,True,True,3830,0.5755031108856201
+What are the complications of Perineal Injury in Males ?,8420,False,True,True,14660,0.8227065801620483
+What is (are) Hereditary sensory neuropathy type 1 ?,10189,False,True,True,1106,0.7307834625244141
+What is (are) Manitoba oculotrichoanal syndrome ?,11804,True,True,True,11804,0.6740871667861938
+How many people are affected by phosphoglycerate dehydrogenase deficiency ?,101,False,False,True,12052,0.7260951399803162
+What is (are) Proud syndrome ?,4328,True,True,True,4328,0.5859638452529907
+What are the symptoms of Narcolepsy ?,1372,True,True,True,1372,0.7415014505386353
+What are the symptoms of Adrenal Insufficiency and Addison's Disease ?,5863,False,True,True,8890,0.850562334060669
+What is the outlook for Encephalopathy ?,3643,True,True,True,3643,0.7587567567825317
+What is (are) dystonia 6 ?,4553,True,True,True,4553,0.7618585228919983
+What are the genetic changes related to hereditary hemochromatosis ?,11415,False,True,True,224,0.8268008232116699
+What are the symptoms of Spinocerebellar ataxia 20 ?,1683,True,True,True,1683,0.8138281106948853
+What are the symptoms of Multifocal choroiditis ?,13374,True,True,True,13374,0.8425009250640869
+What is (are) prekallikrein deficiency ?,15839,False,False,True,5402,0.7603914141654968
+What are the symptoms of TAR syndrome ?,12599,True,True,True,12599,0.6736080646514893
+What is (are) Non-Small Cell Lung Cancer ?,1720,True,True,True,1720,0.738387942314148
+What is (are) Aicardi-Goutieres syndrome ?,862,False,False,False,3671,0.7684285640716553
+What are the symptoms of Infantile spasms broad thumbs ?,14980,True,True,True,14980,0.7622308731079102
+What are the genetic changes related to Rothmund-Thomson syndrome ?,1056,False,False,True,9319,0.6931922435760498
+What are the symptoms of Friedreich ataxia ?,13789,False,False,True,3013,0.6904500722885132
+What are the treatments for acral peeling skin syndrome ?,12920,False,False,False,13897,0.7355695366859436
+What is (are) Staphylococcal Infections ?,2495,True,True,True,2495,0.7353390455245972
+Is Binswanger's disease inherited ?,10477,True,True,True,10477,0.7802852392196655
+What is the outlook for Inclusion Body Myositis ?,10995,True,True,True,10995,0.6724082231521606
+What are the treatments for cyclic neutropenia ?,8379,True,True,True,8379,0.694989800453186
+What are the symptoms of Hematuria (Blood in the Urine) ?,6332,False,True,True,15912,0.832511305809021
+"What are the symptoms of Renal tubular acidosis, distal, autosomal dominant ?",13351,True,True,True,13351,0.8476963043212891
+What causes Chiari malformation type 1 ?,13435,True,True,True,13435,0.7900077104568481
+What is (are) Parry-Romberg ?,12942,False,False,False,13203,0.4383963942527771
+Is Cleidocranial dysplasia inherited ?,169,True,True,True,169,0.8140625953674316
+What causes Immunodeficiency with hyper IgM type 1 ?,6248,True,True,True,6248,0.7827805876731873
+Is paramyotonia congenita inherited ?,387,True,True,True,387,0.7703596353530884
+What are the symptoms of Ectopia pupillae ?,5787,True,True,True,5787,0.7729341983795166
+How many people are affected by phosphoglycerate kinase deficiency ?,14888,True,True,True,14888,0.7629287242889404
+What are the symptoms of Limb deficiencies distal with micrognathia ?,11584,True,True,True,11584,0.8179645538330078
+What are the symptoms of Amyopathic dermatomyositis ?,150,False,True,True,9941,0.7894218564033508
+What is (are) Fanconi renotubular syndrome ?,6440,False,True,True,12316,0.6712726950645447
+What is (are) Listeria Infections ?,10725,True,True,True,10725,0.7005159258842468
+What is (are) Mitral Valve Prolapse ?,9775,False,False,True,7092,0.6735281944274902
+What is (are) Narcolepsy ?,3334,False,True,True,7000,0.6958504319190979
+What is (are) 5q14.3 microdeletion syndrome ?,10898,False,False,False,2594,0.7669163942337036
+What is the outlook for Kennedy's Disease ?,3546,False,True,True,10212,0.644574761390686
+What are the genetic changes related to congenital diaphragmatic hernia ?,14319,False,True,True,15046,0.8233559131622314
+What is (are) generalized arterial calcification of infancy ?,13665,True,True,True,13665,0.824840784072876
+What is (are) progressive external ophthalmoplegia ?,10032,False,True,True,3683,0.7868809103965759
+Does ethnicity affect where people with cancer die?,11770,True,True,True,11770,0.6565210223197937
+"What are the symptoms of Welander distal myopathy, Swedish type ?",7202,True,True,True,7202,0.8436791896820068
+Is Nager syndrome inherited ?,7640,True,True,True,7640,0.7318006753921509
+What are the genetic changes related to mucolipidosis III alpha/beta ?,9272,False,True,True,12620,0.738057553768158
+Do you have information about Occupational Health for Healthcare Providers,3755,True,True,True,3755,0.7520326375961304
+What is (are) Gaucher Disease ?,9212,False,True,True,9966,0.7136121988296509
+Is Von Hippel-Lindau disease inherited ?,3752,True,True,True,3752,0.7289590835571289
+What is (are) Choosing a Doctor or Health Care Service ?,3481,True,True,True,3481,0.84248948097229
+What are the treatments for frontotemporal dementia with parkinsonism-17 ?,1411,True,True,True,1411,0.7159836292266846
+What is (are) Histiocytosis-lymphadenopathy plus syndrome ?,6848,True,True,True,6848,0.8078359365463257
+Is Cornelia de Lange syndrome inherited ?,291,True,True,True,291,0.7758507132530212
+what research (or clinical trials) is being done for Langerhans Cell Histiocytosis ?,15429,False,True,True,11844,0.7153569459915161
+What is (are) Chronic fatigue syndrome ?,6733,False,False,True,11614,0.7337056398391724
+What are the symptoms of Hypohidrotic ectodermal dysplasia with immune deficiency ?,1617,True,True,True,1617,0.8666844964027405
+What is (are) Aicardi syndrome ?,6790,False,True,True,3671,0.5993542671203613
+What is (are) trichohepatoenteric syndrome ?,10084,True,True,True,10084,0.7901179790496826
+Is decompressive surgery effective for spinal cord sarcoidosis accompanied with compressive cervical myelopathy?,8064,True,True,True,8064,0.8612749576568604
+Are physician estimates of asthma severity less accurate in black than in white patients?,1090,True,True,True,1090,0.8880749344825745
+Are pelvic anatomical structures in danger during arthroscopic acetabular labral repair?,13572,True,True,True,13572,0.7582290172576904
+What are the symptoms of Alzheimer's Disease ?,11218,True,True,True,11218,0.7487747669219971
+What are the symptoms of Bardet-Biedl syndrome 2 ?,14956,True,True,True,14956,0.7921279072761536
