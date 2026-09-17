@@ -1,0 +1,7 @@
+metric,value,notes
+phi_detection_rate,1.0,Controlled synthetic PHI test set
+unsafe_output_detection_rate,1.0,Controlled repetitive and instruction-leakage examples
+false_positive_rate,0.0,Controlled normal-answer example
+unsupported_answer_rate,1.0,Controlled unsupported vitamin-K claim
+valid_answer_rate,1.0,Controlled grounded-answer example
+abstention_rate,0.286,Controlled seven-case validation set
