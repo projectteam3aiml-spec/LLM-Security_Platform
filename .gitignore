@@ -1,9 +1,15 @@
-@"
 # Python
 __pycache__/
 *.pyc
 .venv/
 venv/
+.pytest_cache/
+
+# Node / frontend builds
+node_modules/
+dist/
+build/
+.next/
 
 # Model files
 *.pt
@@ -20,4 +26,12 @@ venv/
 
 # Logs
 *.log
-"@ | Out-File -Encoding utf8 .gitignore
+
+# Secrets / environment
+.env
+.env.local
+.env.*.local
+
+# OS metadata
+.DS_Store
+Thumbs.db
