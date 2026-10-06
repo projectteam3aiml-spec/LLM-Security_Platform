@@ -109,10 +109,17 @@ class AnalysisRepository:
             return {"safe": 0.0, "suspicious": 0.0, "malicious": 0.0}
         return {key: round(value / total * 100, 1) for key, value in buckets.items()}
 
-    def get_p95_latency_ms(self) -> Optional[float]:
+    def get_p95_latency_ms(self) -> Dict[str, Any]:
         """Python-side percentile (not a SQL percentile_cont) -- simplest
         portable option given the row counts this table realistically holds
-        early in the product's life; revisit if that assumption stops holding."""
+        early in the product's life; revisit if that assumption stops holding.
+
+        Returns sample_size alongside the value: with a handful of rows,
+        "the 95th percentile" just picks near the single slowest sample, so
+        callers (ModelHealth.jsx) need the count to decide whether a slow
+        reading is a trustworthy signal or one post-reset outlier -- without
+        it, one unlucky request right after a truncate could flip the SLA
+        badge to "Degraded" off a sample of one."""
         samples = sorted(
             value
             for (value,) in self.db.query(PromptAnalysis.latency_ms)
@@ -120,9 +127,9 @@ class AnalysisRepository:
             .all()
         )
         if not samples:
-            return None
+            return {"value": None, "sample_size": 0}
         index = min(int(len(samples) * 0.95), len(samples) - 1)
-        return round(samples[index], 1)
+        return {"value": round(samples[index], 1), "sample_size": len(samples)}
 
     def get_hourly_trends(self, hours: int = 24) -> List[Dict[str, Any]]:
         """Buckets BLOCK/REVIEW counts by hour over the trailing window. Python-side

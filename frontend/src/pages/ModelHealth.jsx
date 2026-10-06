@@ -90,12 +90,21 @@ export default function ModelHealth() {
   const pipeline = health?.pipeline;
   const p95 = health?.p95_latency_ms;
   const P95_TARGET_MS = 3000;
+  // With under 10 samples, "the 95th percentile" just picks near the single
+  // slowest request -- one post-reset outlier shouldn't be enough to flip
+  // this to a confident "Degraded". A good reading is trusted at any sample
+  // size (there's no harm in that), but a slow one only counts once there's
+  // enough data to back it up; below that it reads as "Warming up" instead.
+  const P95_MIN_SAMPLE_SIZE = 10;
+  const p95SampleSize = health?.p95_sample_size ?? 0;
   const p95Status =
     p95 == null
       ? { label: 'No data', variant: 'slate' }
       : p95 <= P95_TARGET_MS
         ? { label: 'Healthy', variant: 'green' }
-        : { label: 'Degraded', variant: 'amber' };
+        : p95SampleSize < P95_MIN_SAMPLE_SIZE
+          ? { label: 'Warming up', variant: 'slate' }
+          : { label: 'Degraded', variant: 'amber' };
 
   // "Unreachable/uninitialized" for all four tiles below means the same
   // thing: the single /dashboard/model-health fetch this page makes never

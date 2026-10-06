@@ -34,6 +34,7 @@ class ModelHealth(BaseModel):
     detection_accuracy: str
     end_to_end_accuracy: str
     p95_latency_ms: Optional[float] = None
+    p95_sample_size: int = 0
     uptime_seconds: float
     cpu_usage_pct: float
     memory_usage_pct: float

@@ -56,12 +56,14 @@ def get_threat_trends(
 def get_model_health(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     repo = AnalysisRepository(db)
     stats = repo.get_stats()
+    p95 = repo.get_p95_latency_ms()
     return ModelHealth(
         status="Operational",
         prompts_analyzed=stats["prompts_analyzed"],
         detection_accuracy=TEST_ACCURACY,
         end_to_end_accuracy=END_TO_END_ACCURACY,
-        p95_latency_ms=repo.get_p95_latency_ms(),
+        p95_latency_ms=p95["value"],
+        p95_sample_size=p95["sample_size"],
         uptime_seconds=time.time() - _PROCESS_START,
         cpu_usage_pct=psutil.cpu_percent(interval=0.1),
         memory_usage_pct=psutil.virtual_memory().percent,
