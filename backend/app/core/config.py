@@ -16,6 +16,9 @@ class Settings(BaseSettings):
     LOG_LEVEL: str = "INFO"
     SECRET_KEY: str
 
+    # JWT auth
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
+
     # Database
     POSTGRES_SERVER: str = "localhost"
     POSTGRES_PORT: int = 5432
@@ -26,8 +29,12 @@ class Settings(BaseSettings):
     @computed_field
     @property
     def SQLALCHEMY_DATABASE_URI(self) -> PostgresDsn:
+        # Sync driver (psycopg2), not asyncpg: every live route/repository
+        # (policies.py, policy_repository.py) uses sqlalchemy.orm.Session with
+        # plain `def` handlers, not AsyncSession -- asyncpg would need a broader
+        # async rewrite of that layer, which isn't what this change is scoped to.
         return MultiHostUrl.build(
-            scheme="postgresql+asyncpg",
+            scheme="postgresql+psycopg2",
             username=self.POSTGRES_USER,
             password=self.POSTGRES_PASSWORD,
             host=self.POSTGRES_SERVER,

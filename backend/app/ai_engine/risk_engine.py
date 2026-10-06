@@ -24,8 +24,19 @@ class RiskEngine:
             "Safe Query": "safe",
         }.get(category, "suspicious")
 
-    def evaluate(self, predicted_class: Union[str, Dict[str, Any]], confidence: float = None) -> Dict[str, Any]:
-        """Calculate the sole project risk score and decision."""
+    def evaluate(
+        self,
+        predicted_class: Union[str, Dict[str, Any]],
+        confidence: float = None,
+        behavioral: Dict[str, Any] = None,
+        healthcare_rule: Dict[str, Any] = None,
+    ) -> Dict[str, Any]:
+        """Calculate the sole project risk score and decision.
+
+        `behavioral` (BehavioralAnomalyEngine.evaluate output) and `healthcare_rule`
+        (HealthcareRuleEngine.evaluate output) are accepted and echoed back for
+        downstream visibility; they are not yet blended into risk_score/decision.
+        """
         if isinstance(predicted_class, dict):
             classification = predicted_class
             label = classification.get("label") or self._legacy_label(classification)
@@ -42,11 +53,18 @@ class RiskEngine:
         confidence = max(0.0, min(1.0, float(confidence)))
         class_risk = self.CLASS_RISK[label]
         risk_score = self.SECURITY_WEIGHTS["class"] * class_risk + self.SECURITY_WEIGHTS["confidence"] * confidence
-        if risk_score < 0.30:
+        # Calibrated cutoffs: FLAG/REVIEW from 0.35 (was 0.30), BLOCK from 0.65
+        # (was 0.70) -- tightens both bands versus the original defaults.
+        if risk_score < 0.35:
             risk_level, decision = "LOW", "ALLOW"
-        elif risk_score < 0.70:
+        elif risk_score < 0.65:
             risk_level, decision = "MEDIUM", "REVIEW"
         else:
             risk_level, decision = "HIGH", "BLOCK"
 
-        return {"predicted_class": label, "confidence": confidence, "class_risk": class_risk, "risk_score": risk_score, "risk_level": risk_level, "decision": decision}
+        result = {"predicted_class": label, "confidence": confidence, "class_risk": class_risk, "risk_score": risk_score, "risk_level": risk_level, "decision": decision}
+        if behavioral is not None:
+            result["behavioral"] = behavioral
+        if healthcare_rule is not None:
+            result["healthcare_rule"] = healthcare_rule
+        return result

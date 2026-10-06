@@ -36,7 +36,7 @@ export const SECURITY_ACTIONS = {
 
 // Model Names and their display labels
 export const MODEL_CATALOG = {
-  INJECTION: 'DeBERTa-v3-Injection',
+  INJECTION: 'DistilBERT-Security-Classifier',
   NER: 'BERT-Base-NER',
   SIMILARITY: 'MiniLM-L6-v2'
 };

@@ -32,7 +32,7 @@ export default function ExplanationPanel({ results }) {
       {/* Breakdown Metrics */}
       <div className="p-6 flex-1 overflow-y-auto space-y-6">
         
-        {/* DeBERTa Intent Risk */}
+        {/* DistilBERT Intent Risk */}
         <div className="flex items-start gap-4">
           <div className="p-2.5 bg-indigo-50 text-indigo-600 rounded-lg shrink-0">
             <ShieldAlert size={20} />
@@ -42,7 +42,10 @@ export default function ExplanationPanel({ results }) {
               <h4 className="text-sm font-semibold text-slate-900">Intent Classification</h4>
               <span className="text-xs font-mono font-medium text-slate-500">{score_breakdown.classifier_risk}/100</span>
             </div>
-            <p className="text-xs text-slate-500 mb-2">Analyzed via DeBERTa-v3 Transformer</p>
+            <p className="text-xs text-slate-500 mb-2">
+              Analyzed via {analysis.classification.model_used || 'DistilBERT'}
+              {analysis.classification.model_test_accuracy && ` (${analysis.classification.model_test_accuracy} test accuracy)`}
+            </p>
             <div className="w-full bg-slate-100 rounded-full h-1.5 mb-2">
               <div className="bg-indigo-500 h-1.5 rounded-full" style={{ width: `${score_breakdown.classifier_risk}%` }}></div>
             </div>

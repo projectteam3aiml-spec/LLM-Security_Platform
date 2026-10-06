@@ -11,18 +11,18 @@
   "eos_token_id": null,
   "hidden_dim": 3072,
   "id2label": {
-    "0": "jailbreak",
+    "0": "safe",
     "1": "malicious",
     "2": "phi",
-    "3": "safe",
+    "3": "jailbreak",
     "4": "suspicious"
   },
   "initializer_range": 0.02,
   "label2id": {
-    "jailbreak": 0,
+    "jailbreak": 3,
     "malicious": 1,
     "phi": 2,
-    "safe": 3,
+    "safe": 0,
     "suspicious": 4
   },
   "max_position_embeddings": 512,
@@ -36,7 +36,7 @@
   "sinusoidal_pos_embds": false,
   "tie_weights_": true,
   "tie_word_embeddings": true,
-  "transformers_version": "5.15.0",
+  "transformers_version": "5.17.0",
   "use_cache": false,
   "vocab_size": 30522
 }

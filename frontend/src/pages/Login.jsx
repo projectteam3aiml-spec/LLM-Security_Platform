@@ -81,8 +81,9 @@ export default function Login() {
           </form>
 
           <div className="mt-6 text-center">
+            <span className="text-sm text-slate-500">No account? </span>
             <Link to="/register" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-              Request Platform Access
+              Create one
             </Link>
           </div>
         </div>

@@ -1,4 +1,5 @@
-from pydantic import BaseModel, Field
+from uuid import UUID
+from pydantic import BaseModel, Field, computed_field
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 
@@ -39,3 +40,30 @@ class AnalysisResponse(BaseModel):
     security_decision: SecurityDecisionSchema
     metrics: Dict[str, Any]
     timestamp: datetime = Field(default_factory=datetime.utcnow)
+
+
+class PromptAnalysisResponse(BaseModel):
+    """Maps straight onto the PromptAnalysis ORM row for the Threat Logs /
+    Overview "recent events" views -- the audit trail analyze.py writes,
+    not the richer live /analyze response shape above."""
+    id: UUID
+    timestamp: datetime
+    source_system: str
+    user_id: Optional[str] = None
+    prompt_text: str
+    risk_score: float
+    decision: str
+    primary_threat: Optional[str] = None
+    flagged_entities: List[str] = []
+    latency_ms: Optional[float] = None
+
+    @computed_field
+    @property
+    def risk_score_pct(self) -> int:
+        """risk_score is stored as the raw 0..1 RiskEngine value -- expose the
+        0..100 display form the frontend actually renders, same convention
+        /analyze's own security_decision.risk_score already uses."""
+        return round(self.risk_score * 100)
+
+    class Config:
+        from_attributes = True

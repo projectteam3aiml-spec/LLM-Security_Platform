@@ -1,7 +1,11 @@
 // frontend/src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-import { LayoutDashboard, Shield, FileText, Activity, Settings, HelpCircle } from 'lucide-react';
+import { LayoutDashboard, Shield, FileText, Activity, Settings, HelpCircle, LogOut } from 'lucide-react';
+
+import { AuthProvider } from './context/AuthContext';
+import { useAuth } from './hooks/useAuth';
+import ProtectedRoute from './components/ProtectedRoute';
 
 // Import your existing pages
 import Overview from './pages/Overview';
@@ -9,8 +13,12 @@ import AnalyzePrompt from './pages/AnalyzePrompt';
 import ThreatLogs from './pages/ThreatLogs';
 import Policies from './pages/Policies';
 import ModelHealth from './pages/ModelHealth';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 const Sidebar = () => {
+  const { user, logout } = useAuth();
+
   const navItems = [
     { name: 'Overview', path: '/', icon: <LayoutDashboard size={20} /> },
     { name: 'Analyze Prompt', path: '/analyze', icon: <Activity size={20} /> },
@@ -61,32 +69,55 @@ const Sidebar = () => {
           <Settings size={20} /> Settings
         </button>
         <div className="mt-4 flex items-center gap-3 px-3 py-2">
-          <div className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center text-white text-xs font-bold">AR</div>
-          <div className="text-left">
-            <p className="text-sm font-medium text-white">Aakruthi Rao</p>
-            <p className="text-xs text-slate-500">Administrator</p>
+          <div className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0">
+            {(user?.email || '?').slice(0, 2).toUpperCase()}
           </div>
+          <div className="text-left flex-1 min-w-0">
+            <p className="text-sm font-medium text-white truncate">{user?.email}</p>
+            <p className="text-xs text-slate-500 capitalize">{user?.role}</p>
+          </div>
+          <button
+            onClick={logout}
+            title="Log out"
+            className="p-1.5 rounded-lg text-slate-400 hover:bg-[#1e293b] hover:text-white shrink-0"
+          >
+            <LogOut size={16} />
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
+const AppLayout = () => (
+  <div className="flex bg-[#f8fafc] min-h-screen font-sans">
+    <Sidebar />
+    <main className="flex-1 overflow-y-auto">
+      {/* Every route below is gated by ProtectedRoute -- the entire app
+          requires a logged-in session, not just /analyze. */}
+      <Routes>
+        <Route element={<ProtectedRoute />}>
+          <Route path="/" element={<Overview />} />
+          <Route path="/analyze" element={<AnalyzePrompt />} />
+          <Route path="/logs" element={<ThreatLogs />} />
+          <Route path="/policies" element={<Policies />} />
+          <Route path="/health" element={<ModelHealth />} />
+        </Route>
+      </Routes>
+    </main>
+  </div>
+);
+
 export default function App() {
   return (
-    <Router>
-      <div className="flex bg-[#f8fafc] min-h-screen font-sans">
-        <Sidebar />
-        <main className="flex-1 overflow-y-auto">
-          <Routes>
-            <Route path="/" element={<Overview />} />
-            <Route path="/analyze" element={<AnalyzePrompt />} />
-            <Route path="/logs" element={<ThreatLogs />} />
-            <Route path="/policies" element={<Policies />} />
-            <Route path="/health" element={<ModelHealth />} />
-          </Routes>
-        </main>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/*" element={<AppLayout />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }

@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
-import api from '../services/api';
+import { authService } from '../services/authService';
 
 export const AuthContext = createContext(null);
 
@@ -8,50 +8,63 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Initialize auth state on app load
+  // Initialize auth state on app load. There's no /auth/me endpoint (lean
+  // backend, login-only) so this trusts the userData cached alongside the
+  // token at login time rather than re-verifying against the server; an
+  // expired/invalid token still gets caught by api.js's 401 interceptor on
+  // the next real request.
   useEffect(() => {
-    const initAuth = async () => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        try {
-          // Verify token with backend (assuming you have a /auth/me endpoint)
-          // const response = await api.get('/auth/me');
-          // setUser(response.data.user);
-          
-          // Mock verification for now
-          setUser({ id: 1, name: 'Admin', role: 'admin' });
-          setIsAuthenticated(true);
-        } catch (error) {
-          console.error('Session expired or invalid token');
-          logout();
-        }
+    const token = localStorage.getItem('token');
+    const cachedUser = localStorage.getItem('userData');
+    if (token && cachedUser) {
+      try {
+        setUser(JSON.parse(cachedUser));
+        setIsAuthenticated(true);
+      } catch (error) {
+        console.error('Invalid cached session');
+        localStorage.removeItem('token');
+        localStorage.removeItem('userData');
       }
-      setIsLoading(false);
-    };
-
-    initAuth();
+    }
+    setIsLoading(false);
   }, []);
+
+  const persistSession = (token, userData) => {
+    localStorage.setItem('token', token);
+    localStorage.setItem('userData', JSON.stringify(userData));
+    setUser(userData);
+    setIsAuthenticated(true);
+  };
 
   const login = useCallback(async (credentials) => {
     setIsLoading(true);
     try {
-      // Real API call would look like this:
-      // const response = await api.post('/auth/login', credentials);
-      // const { token, userData } = response.data;
-      
-      // Mock login process
-      const token = "mock_jwt_token_12345";
-      const userData = { id: 1, name: 'Admin', role: 'admin' };
-      
-      localStorage.setItem('token', token);
-      setUser(userData);
-      setIsAuthenticated(true);
+      const { token, userData } = await authService.login(credentials);
+      persistSession(token, userData);
       return { success: true };
     } catch (error) {
       console.error('Login failed:', error);
-      return { 
-        success: false, 
-        error: error.response?.data?.detail || 'Invalid credentials' 
+      return {
+        success: false,
+        error: error.response?.data?.detail || 'Invalid credentials',
+      };
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  const register = useCallback(async (credentials) => {
+    setIsLoading(true);
+    try {
+      const { token, userData } = await authService.register(credentials);
+      // Registration logs the new user straight in, same as login.
+      persistSession(token, userData);
+      return { success: true };
+    } catch (error) {
+      console.error('Registration failed:', error);
+      return {
+        success: false,
+        error: error.response?.data?.detail || 'Could not create account',
       };
     } finally {
       setIsLoading(false);
@@ -60,6 +73,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = useCallback(() => {
     localStorage.removeItem('token');
+    localStorage.removeItem('userData');
     setUser(null);
     setIsAuthenticated(false);
   }, []);
@@ -69,6 +83,7 @@ export const AuthProvider = ({ children }) => {
     isAuthenticated,
     isLoading,
     login,
+    register,
     logout
   };
 

@@ -15,26 +15,46 @@ class SecureRAGPipeline:
         self.root, self.review_policy = Path(root), review_policy
         self.validator = OutputValidator()
         self.risk_engine = RiskEngine()
-        self._loaded = False
+        self._classifier_loaded = False
+        self._generation_loaded = False
 
     def load(self) -> None:
-        import torch, faiss
-        from transformers import AutoModelForSequenceClassification, AutoTokenizer, T5ForConditionalGeneration, T5Tokenizer
-        from sentence_transformers import SentenceTransformer
+        """Eagerly load the classifier plus the retrieval/generation stack."""
+        self._load_classifier()
+        self._load_generation()
+
+    def _load_classifier(self) -> None:
+        """Load only what RiskEngine assessment needs: the security classifier."""
+        if self._classifier_loaded:
+            return
+        import torch
+        from transformers import AutoModelForSequenceClassification, AutoTokenizer
         base = self.root / "Healthcare_Dataset_Preparation"
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         model_dir = base / "outputs/security_classifier/best_model"
         self.tokenizer = AutoTokenizer.from_pretrained(model_dir)
         self.classifier = AutoModelForSequenceClassification.from_pretrained(model_dir).to(self.device).eval()
+        self._classifier_loaded = True
+
+    def _load_generation(self) -> None:
+        """Load the heavy retrieval/generation stack (FAISS, embedder, FLAN-T5)."""
+        if self._generation_loaded:
+            return
+        self._load_classifier()  # ensures self.device exists
+        import faiss
+        from transformers import T5ForConditionalGeneration, T5Tokenizer
+        from sentence_transformers import SentenceTransformer
+        base = self.root / "Healthcare_Dataset_Preparation"
         self.index = faiss.read_index(str(base / "outputs/faiss/knowledge_base.index"))
         self.kb = pd.read_csv(base / "data/processed/knowledge_base.csv")
         self.embedder = SentenceTransformer("pritamdeka/BioBERT-mnli-snli-scinli-scitail-mednli-stsb")
         self.llm_tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-base")
         self.llm = T5ForConditionalGeneration.from_pretrained("google/flan-t5-base").to(self.device).eval()
         if self.index.ntotal != len(self.kb): raise ValueError("FAISS and metadata counts differ")
-        self._loaded = True
+        self._generation_loaded = True
 
     def classify(self, prompt: str) -> Dict[str, Any]:
+        if not self._classifier_loaded: self._load_classifier()
         import torch
         inputs = {key: value.to(self.device) for key, value in self.tokenizer(prompt, return_tensors="pt", truncation=True, max_length=256).items()}
         with torch.no_grad(): probabilities = torch.softmax(self.classifier(**inputs).logits, dim=-1)[0].cpu().numpy()
@@ -65,13 +85,13 @@ class SecureRAGPipeline:
         return selected[:3]
 
     def answer(self, prompt: str) -> Dict[str, Any]:
-        if not self._loaded: self.load()
         security = self.classify(prompt)
         result = {"query": prompt, **security, "retrieval_performed": False, "llm_executed": False, "retrieved_documents": [], "generated_answer": None}
         if security["decision"] == "BLOCK":
             result.update({"validation_status": "BLOCKED", "final_answer": "This request cannot be processed safely."}); return result
         if security["decision"] == "REVIEW":
             result.update({"validation_status": "REVIEW", "review_policy": self.review_policy, "final_answer": "This request requires manual security review before it can be processed."}); return result
+        self._load_generation()
         candidates = self.retrieve(prompt, 5); result["retrieval_performed"] = True
         evidence = self.select_evidence(prompt, candidates); result["retrieved_documents"] = evidence
         if not evidence:
@@ -82,4 +102,5 @@ class SecureRAGPipeline:
         inputs = self.llm_tokenizer(instruction, return_tensors="pt", truncation=True, max_length=1024).to(self.device)
         with torch.no_grad(): output = self.llm.generate(**inputs, max_new_tokens=128, do_sample=False)
         generated = self.llm_tokenizer.decode(output[0], skip_special_tokens=True)
-        result["generated_answer"] = generated; result.update(self.validator.validate(generated, context, answerable=True)); return result
+        result["generated_answer"] = generated; result["llm_executed"] = True
+        result.update(self.validator.validate(generated, context, answerable=True)); return result

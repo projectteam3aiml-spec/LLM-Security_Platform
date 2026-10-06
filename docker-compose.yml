@@ -1,0 +1,71 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres_password}
+      POSTGRES_DB: ${POSTGRES_DB:-llm_security_db}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - llm-security-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-llm_security_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      # Overrides whatever POSTGRES_SERVER/PORT might be set to in .env: on the
+      # compose network, the Postgres service is always reachable at its service
+      # name, "db".
+      POSTGRES_SERVER: db
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres_password}
+      POSTGRES_DB: ${POSTGRES_DB:-llm_security_db}
+    ports:
+      - "8000:8000"
+    volumes:
+      # Model weights (model.safetensors, ~256MB) plus the FAISS index and
+      # knowledge-base CSVs the RAG pipeline retrieves against -- mounted, not
+      # baked into the image. Path must land at /app/Healthcare_Dataset_Preparation
+      # (see Dockerfile comment) so SecureRAGPipeline's project-root resolution
+      # in analysis_service.py finds it without any code changes.
+      - ./Healthcare_Dataset_Preparation:/app/Healthcare_Dataset_Preparation
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - llm-security-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:8000/api/v1}
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    networks:
+      - llm-security-net
+
+networks:
+  llm-security-net:
+    driver: bridge
+
+volumes:
+  postgres_data:

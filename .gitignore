@@ -35,3 +35,9 @@ build/
 # OS metadata
 .DS_Store
 Thumbs.db
+
+# Local benchmark/evaluation outputs -- reproducible run artifacts, not
+# source (see Healthcare_Dataset_Preparation/scripts/evaluate_live_pipeline.py
+# and run_shap_explainability.py). Kept on disk, kept out of git.
+Healthcare_Dataset_Preparation/outputs/evaluation/live_pipeline_decision_*
+Healthcare_Dataset_Preparation/outputs/explainability/
